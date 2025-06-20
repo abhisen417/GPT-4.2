@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: binance-trading-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: BINANCE_API_KEY
+        sync: false
+      - key: BINANCE_API_SECRET
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: TRADE_AMOUNT_INR
+        value: "500"
+      - key: INR_USDT_RATE
+        value: "83"
+      - key: USE_TESTNET
+        value: "True"
